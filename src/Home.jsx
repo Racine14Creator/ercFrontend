@@ -30,8 +30,6 @@ const Home = () => {
                 <Pasteur />
             </section>
 
-
-
             <section className="padding">
                 <Mariage />
             </section>
