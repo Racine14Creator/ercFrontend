@@ -3,7 +3,9 @@ import mongoose from "mongoose"
 import * as dotenv from "dotenv"
 
 dotenv.config({ path: '.env' })
+
 const app = express(),
+    MONGO = process.env.MONGO,
     PORT = process.env.PORT || 4500
 
 const Server = () => {
@@ -12,7 +14,7 @@ const Server = () => {
             console.log('Connected to MongoDB')
             app.listen(PORT, (err) => {
                 if (err) throw new Error("Failed to run the server")
-                console.log(`Ser er run on PORT localhost:${PORT}`)
+                console.log(`Server run on PORT http://localhost:${PORT}`)
             })
         })
         .catch(err => console.log(err))
