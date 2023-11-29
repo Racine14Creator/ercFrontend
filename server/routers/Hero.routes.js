@@ -1,10 +1,18 @@
-import express from "express"
-import { getHero, getSingleHero } from "../controllers/Hero/Hero.controller"
+import express from "express";
+import {
+    getHeroes,
+    getHeroById,
+    createHero,
+    updateHero,
+    deleteHero,
+} from "../controllers/Hero/Hero.controller.js";
+import { validateHeroId } from "../middlewares/heroValidation.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.route("/").get(getHero)
+router.route("/").get(getHeroes).post(createHero);
 
-router.route("/:id").get(getSingleHero)
+router.route("/:id").get(validateHeroId, getHeroById).put(validateHeroId, updateHero).delete(validateHeroId, deleteHero);
 
-export default router
+
+export default router;

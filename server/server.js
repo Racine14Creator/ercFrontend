@@ -1,22 +1,36 @@
-import express from "express"
-import mongoose from "mongoose"
-import * as dotenv from "dotenv"
+import * as dotenv from "dotenv";
+dotenv.config({ path: ".env" });
 
-dotenv.config({ path: '.env' })
 
-const app = express(),
-    MONGO = process.env.MONGO,
-    PORT = process.env.PORT || 4500
+import express from "express";
+import mongoose from "mongoose";
 
-const Server = () => {
-    mongoose.connect(MONGO)
-        .then(_ => {
-            console.log('Connected to MongoDB')
-            app.listen(PORT, (err) => {
-                if (err) throw new Error("Failed to run the server")
-                console.log(`Server run on PORT http://localhost:${PORT}`)
-            })
-        })
-        .catch(err => console.log(err))
-}
-Server()
+import heroRoutes from "./routers/Hero.routes.js";
+
+
+
+const app = express();
+const PORT = process.env.PORT || 4500;
+const MONGO = process.env.MONGO;
+
+app.use(express.json());
+
+// Use your routes here
+app.use("/heroes", heroRoutes);
+
+
+
+
+const Server = async () => {
+    try {
+        await mongoose.connect(MONGO);
+        console.log("Connected to MongoDB");
+        app.listen(PORT, () => {
+            console.log(`Server run on PORT http://localhost:${PORT}`);
+        });
+    } catch (error) {
+        console.error("Failed to connect to MongoDB:", error);
+    }
+};
+
+Server();
