@@ -3,15 +3,15 @@ import mongoose from "mongoose";
 const heroSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
+        required: false,
     },
     title: {
         type: String,
-        required: true,
+        required: false,
     },
     paragraph: {
         type: String,
-        required: true,
+        required: false,
     },
     img: {
         type: String,

@@ -26,12 +26,15 @@ const HeroForm = () => {
         formDataToSend.append('name', formData.name);
         formDataToSend.append('title', formData.title);
         formDataToSend.append('paragraph', formData.paragraph);
-        formDataToSend.append('img', formData.img);
+        formDataToSend.append('image', formData.img);
 
         try {
             // Make a POST request to your server endpoint
-            const response = await axios.post('http://localhost:7000/creator', formDataToSend);
-
+            const response = await axios.post('http://localhost:7000/creator',
+                {
+                    method: "POST",
+                    body: formDataToSend
+                });
             // Handle the response (you can redirect or display a success message)
             console.log('Response:', response.data);
         } catch (error) {

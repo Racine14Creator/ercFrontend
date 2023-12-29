@@ -43,8 +43,10 @@ cloudinary.config({
 app.use("/heroes", heroRoutes);
 
 app.post("/heroes", [
-    check('name', "Name is required").isLength({ min: 3, max: 20 }, "Name must have at least 3 characteres up 20..."),
-    check("title", "Title is require").isLength({ min: 5, max: 35 }, "Title must have 5 characteres up 35")
+    check('name', "Name is required")
+        .isLength({ min: 3, max: 20 }, "Name must have at least 3 characteres up 20..."),
+    check("title", "Title is require")
+        .isLength({ min: 5, max: 35 }, "Title must have 5 characteres up 35")
 ], upload.single('image'), (req, res) => {
     const errors = validationResult(req)
 
