@@ -11,11 +11,6 @@
     box-sizing: border-box;
 }
 
-body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: roboto;
-}
 
 a {
     color: inherit;
