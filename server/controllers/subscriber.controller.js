@@ -8,7 +8,9 @@ export const getAll = async (req, res) => {
 export const post = async (req, res) => {
     const { email } = req.body
 
-    if (email === '' || email === undefined) { res.json("Email is empty") } else {
+    if (email === '' || email === undefined) {
+        res.json({ message: "Email is empty" })
+    } else {
         Subscriber.findOne({ email })
             .then(sb => {
                 if (sb) {
