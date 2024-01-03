@@ -19,6 +19,9 @@ const heroSchema = new mongoose.Schema({
     },
 }, { timestamps: true });
 
-const Hero = mongoose.model("Hero", heroSchema);
+const subscriberSchema = new mongoose.Schema({
+    email: { type: String, required: true }
+}, { timestamps: true })
 
-export default Hero;
+export const Subscriber = mongoose.model("Subscriber", subscriberSchema)
+export const Hero = mongoose.model("Hero", heroSchema);
