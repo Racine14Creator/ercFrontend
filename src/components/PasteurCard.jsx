@@ -1,7 +1,7 @@
 const PasteurCard = ({ imgURL, name, location }) => {
   return (
-    <div className="flex flex-col hover:shadow-xl justify-center rounded-[10px] w-full max-sm:w-full">
-      <img src={imgURL} alt={name} className=" max-md:w-full m-auto rounded-full w-[282px] h-[282px]" />
+    <div className="flex flex-col text-center p-3 cursor-pointer hover:shadow-xl justify-center rounded-[10px] w-full max-sm:w-full">
+      <img src={imgURL} alt={name} className="max-md:w-full m-auto rounded-full w-[282px] h-[282px] object-cover" />
 
       <h3 className="pt-2 px-3 mt-2 text-2xl leading-normal font-semibold font-palanquin">
         {name}

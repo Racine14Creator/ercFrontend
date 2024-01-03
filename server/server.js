@@ -49,7 +49,6 @@ app.post("/heroes", [
         .isLength({ min: 5, max: 35 }, "Title must have 5 characteres up 35")
 ], upload.single('image'), (req, res) => {
     const errors = validationResult(req)
-
     if (!errors.isEmpty()) {
         return res.json(errors)
     } else {

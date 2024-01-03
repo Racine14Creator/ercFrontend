@@ -22,16 +22,16 @@ import {
 } from "../assets/images";
 
 import masasu from "../assets/images/masasu.png";
-import bisimwa from "../assets/images/bisimwa.jpeg";
 import coupleMasasu from "../assets/images/coupleMasasu.png";
+import PasteurImg from "../assets/images/ercImages/pasteur.jpg";
+import PasteurImgKin from "../assets/images/ercImages/pasteurKin.jpg";
+import PasteurImgBunia from "../assets/images/ercImages/pasteurBunia.jpg";
 
 export const navLinks = [
   { href: "#home", label: "Accueil" },
   { href: "#pasteurs", label: "Nos Pasteurs" },
   // { href: "#Enseignement", label: "Enseignement" },
-  { href: "#Ministères ", label: "Ministères " },
   { href: "#Événements  ", label: "Événements  " },
-  { href: "#products", label: "Services et horaires" },
   // { href: "#contact-us", label: "Contact Nous" },
 ];
 
@@ -43,9 +43,9 @@ export const statistics = [
 
 export const pasteurs = [
   { imgURL: masasu, name: "Apotre Masasu Masengo", location: "Kigali" },
-  { imgURL: masasu, name: "Gabriel Masasu", location: "Gisenyi" },
-  { imgURL: bisimwa, name: "Valoi", location: "Gisenyi" },
-  { imgURL: coupleMasasu, name: "Bisimwa Grace", location: "Goma" },
+  { imgURL: PasteurImgKin, name: "Pasteur Kin", location: "Kinshasa" },
+  { imgURL: PasteurImgBunia, name: "Bunia", location: "Bunia" },
+  { imgURL: PasteurImg, name: "Pastor", location: "Bunia" },
 ];
 
 export const products = [

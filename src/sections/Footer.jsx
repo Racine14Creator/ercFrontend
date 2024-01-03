@@ -17,8 +17,7 @@ const Footer = () => {
             />
           </a>
           <p className="mt-6 text-base leading-7 font-montserrat text-white-400 sm:max-w-sm">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Perspiciatis exercitationem eveniet aliquid voluptatum?
+            En 2024, que la lumière du Christ éclaire nos vies, répandant amour, paix et compassion tout autour de nous. Amen.
           </p>
           <div className="flex items-center gap-5 mt-8">
             {socialMedia.map((icon) => (
