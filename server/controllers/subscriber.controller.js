@@ -41,12 +41,11 @@ export const getOne = async (req, res) => {
 }
 
 export const update = async (req, res) => {
-    // const { email, id } = req.body
-    const filter = { Id: req.params.id }
-    const update = { email: req.body.email }
-
-    // const doc = await Subscriber.findOneAndUpdate(filter, update, { returnOriginal: false, new: true })
-    // res.json({ doc })
+    const { email } = req.body
+    const Id = req.params.id
+    await Subscriber.findByIdAndUpdate(Id, email, { new: true })
+        .then(sb => res.json(sb))
+        .catch(error => { console.log(error) })
 }
 
 export const deleteOne = async (req, res) => {
