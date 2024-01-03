@@ -1,4 +1,5 @@
 import * as dotenv from "dotenv";
+import bodyParser from "body-parser";
 dotenv.config({ path: ".env" });
 
 import path from "path"
@@ -11,13 +12,18 @@ import { check, validationResult } from "express-validator"
 
 import multer from 'multer';
 import cloudinary from 'cloudinary';
-import Hero from "./models/models.js";
+import { Hero } from "./models/models.js";
+import routerSubscriber from "./routers/subscriber.routes.js";
 
 const app = express();
 const PORT = process.env.PORT || 4500;
 const MONGO = process.env.MONGO;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true, limit: "30mb" }))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
         callback(null, 'images')
@@ -39,6 +45,7 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET || "9YOIvJmJPV23Ji17dCM3on1-RUI",
 });
 
+app.use('/subscriber', routerSubscriber)
 // Use your routes here
 app.use("/heroes", heroRoutes);
 

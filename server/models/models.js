@@ -20,8 +20,11 @@ const heroSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 const subscriberSchema = new mongoose.Schema({
-    email: { type: String, required: true }
+    email: {
+        type: String,
+    }
 }, { timestamps: true })
 
-export const Subscriber = mongoose.model("Subscriber", subscriberSchema)
+export const Subscriber = mongoose.model("Subscriber", subscriberSchema);
+
 export const Hero = mongoose.model("Hero", heroSchema);
