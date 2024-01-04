@@ -41,16 +41,29 @@ export const getOne = async (req, res) => {
 }
 
 export const update = async (req, res) => {
-    const { email } = req.body
-    const Id = req.params.id
-    await Subscriber.findByIdAndUpdate(Id, email, { new: true })
-        .then(sb => res.json(sb))
-        .catch(error => { console.log(error) })
+    const { email, Id } = req.body
+    // const Id = req.params.id
+
+    console.log(req.body);
+    try {
+        await Subscriber.findByIdAndUpdate(Id, { email: email }, { new: true })
+            .then(sb => res.json(sb))
+            .catch(error => { console.log(error) })
+    } catch (error) {
+        console.log(error)
+        return error
+    }
 }
+
 
 export const deleteOne = async (req, res) => {
     const id = req.params.id
-    await Subscriber.findByIdAndDelete(id)
-        .then(sub => res.json(sub))
-        .catch(error => console.log(error))
+    try {
+        await Subscriber.findByIdAndDelete(id)
+            .then(sub => res.json(sub))
+            .catch(error => console.log(error))
+    } catch (error) {
+        console.log(error)
+        return error
+    }
 }

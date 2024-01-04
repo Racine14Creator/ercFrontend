@@ -13,7 +13,7 @@ const heroSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-    img: {
+    image: {
         type: String,
         required: false,
     },

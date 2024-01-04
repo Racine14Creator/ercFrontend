@@ -1,24 +1,19 @@
 import * as dotenv from "dotenv";
 import bodyParser from "body-parser";
 dotenv.config({ path: ".env" });
-
 import path from "path"
-
 import express from "express";
 import mongoose from "mongoose";
-
 import heroRoutes from "./routers/Hero.routes.js";
-import { check, validationResult } from "express-validator"
-
 import multer from 'multer';
-import cloudinary from 'cloudinary';
-import { Hero } from "./models/models.js";
 import routerSubscriber from "./routers/subscriber.routes.js";
+import cors from "cors"
 
 const app = express();
 const PORT = process.env.PORT || 4500;
 const MONGO = process.env.MONGO;
 
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: "30mb" }))
 app.use(bodyParser.json())
@@ -39,35 +34,29 @@ export const upload = multer({
 });
 
 
-cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME || 'duetomqjz',
-    api_key: process.env.CLOUDINARY_API_KEY || "678377753892168",
-    api_secret: process.env.CLOUDINARY_API_SECRET || "9YOIvJmJPV23Ji17dCM3on1-RUI",
-});
+// cloudinary.config({
+//     cloud_name: process.env.CLOUD_NAME || 'duetomqjz',
+//     api_key: process.env.CLOUDINARY_API_KEY || "678377753892168",
+//     api_secret: process.env.CLOUDINARY_API_SECRET || "9YOIvJmJPV23Ji17dCM3on1-RUI",
+// });
 
 app.use('/subscriber', routerSubscriber)
 // Use your routes here
 app.use("/heroes", heroRoutes);
 
-app.post("/heroes", [
-    check('name', "Name is required")
-        .isLength({ min: 3, max: 20 }, "Name must have at least 3 characteres up 20..."),
-    check("title", "Title is require")
-        .isLength({ min: 5, max: 35 }, "Title must have 5 characteres up 35")
-], upload.single('image'), (req, res) => {
-    const errors = validationResult(req)
-    if (!errors.isEmpty()) {
-        return res.json(errors)
-    } else {
-        const { name, title, paragraph } = req.body
-        const image = req.file.filename
-        const newHero = new Hero({
-            name, title, paragraph, image
-        })
-        newHero.save()
-            .then(doc => res.json(doc))
-            .catch(error => console.log(error))
-    }
+app.post("/heroes", upload.single('image'), async (req, res) => {
+
+    const { name, title, paragraph } = req.body
+    console.log(req.file.path);
+
+    const image = req.file.filename;
+
+    const newHero = new Hero({
+        name, title, paragraph, image
+    })
+    await newHero.save()
+        .then(doc => res.json(doc))
+        .catch(error => console.log(error))
 })
 
 const Server = async () => {
