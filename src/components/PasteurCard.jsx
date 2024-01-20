@@ -6,7 +6,7 @@ const PasteurCard = ({ imgURL, name, location }) => {
       <h3 className="pt-2 px-3 mt-2 text-2xl leading-normal font-semibold font-palanquin">
         {name}
       </h3>
-      <p className="flex px-3 items-center mt-2 font-semibold font-montserrat text-coral-red text-2xl leading-normal">
+      <p className="flex px-3 items-center mt-2 font-semibold font-montserrat text-center text-coral-red text-2xl leading-normal">
         {location}
         <span>
           <svg

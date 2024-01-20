@@ -1,5 +1,12 @@
 import express from "express"
-import { deleteOne, getAll, getOne, post, update } from "../controllers/subscriber.controller.js"
+import {
+    deleteOne,
+    getAll,
+    getOne,
+    post,
+    update
+} from "../controllers/subscriber.controller.js"
+
 const router = express.Router()
 
 router.route('/').get(getAll).post(post)

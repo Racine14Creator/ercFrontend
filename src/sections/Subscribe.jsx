@@ -5,18 +5,25 @@ const Subscribe = () => {
     [isPending, setIsPending] = useState(false)
 
   const HandlerSubmit = (event) => {
+
     event.preventDefault()
+
     setIsPending(true)
 
-    const body = email
+    const body = {
+      "email": email
+    }
     console.log(body);
+
     let url = "http://localhost:7000/subscriber"
+
     fetch(`${url}`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringfy({ body })
     }).then(_ => {
-      console.log("Registration...");
       setIsPending(false)
     }).catch(error => console.error(error))
   }
@@ -32,6 +39,7 @@ const Subscribe = () => {
             <span className="text-coral-red"> mises à jour et des </span>bulletins
             d’information
           </h3>
+
           <div className="lg:max-w-[40%] w-full flex items-center max-sm:flex-col gap-5 p-2.5 sm:border sm:border-slate-gray rounded-full">
             <input
               type="text"
@@ -60,6 +68,7 @@ const Subscribe = () => {
               </button>
             </div>
           </div>
+
         </section >
       </form>
     </>

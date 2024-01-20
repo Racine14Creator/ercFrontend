@@ -11,7 +11,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="w-full flex xl:flex-row flex-col justify-center min-h-screen gap-10 max-w-[1240px] mx-auto"
+      className="w-full flex xl:flex-row flex-col justify-center py-5 min-h-screen gap-10 max-w-[1200px] mx-auto"
     >
       <div
         data-aos="fade-left"

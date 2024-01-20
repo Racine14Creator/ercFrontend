@@ -4,7 +4,7 @@ import { PasteurCard } from "../components";
 const Pasteur = () => {
   return (
     <section id="pasteurs" className="max-w-[1240px] mx-auto max-sm:mt-24s">
-      <div className="flex flex-col justify-start gap-5">
+      <div className="max-w-[1240px] max-auto flex flex-col justify-start gap-5">
         <h2 className="text-4xl uppercase text-gray-500 font-palanquin font-bold" data-aos="flip-down">
           Nos <span className="text-coral-red"> Pasteurs </span> dans le monde
         </h2>

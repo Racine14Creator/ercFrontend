@@ -7,7 +7,7 @@ import Button from "./Button";
 const Nav = () => {
   return (
     <header className="fixed left-0 top-0 padding-x py-8 bg-white z-10 w-full">
-      <nav className="flex justify-between items-center max-container">
+      <nav className="max-w-[1240px] max-auto flex justify-between items-center max-container">
         <a href="/">
           <img
             src={headerLogo}

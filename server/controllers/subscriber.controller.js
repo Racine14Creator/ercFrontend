@@ -6,27 +6,30 @@ export const getAll = async (req, res) => {
 }
 
 export const post = async (req, res) => {
-    const { email } = req.body
 
-    if (email === '' || email === undefined) {
-        res.json({ message: "Email is empty" })
-    } else {
-        Subscriber.findOne({ email })
-            .then(sb => {
-                if (sb) {
-                    res.json({ message: "This email is taken" })
-                } else {
-                    const newSubscriber = new Subscriber({ email })
-                    newSubscriber.save()
-                        .then(subscriber => { res.json(subscriber) })
-                        .catch(error => console.log(error))
-                }
-            })
-            .catch(error => {
-                console.log(error);
-                res.json(error)
-            })
-    }
+    const { email } = req.body
+    console.log(req.body)
+
+    // if (email === '' || email === undefined) {
+    //     res.json({ message: "Email is empty" })
+    // } else {
+    //     console.log(email)
+    //     // Subscriber.findOne({ email })
+    //     //     .then(sb => {
+    //     //         if (sb) {
+    //     //             res.json({ message: "This email is taken" })
+    //     //         } else {
+    //     //             const newSubscriber = new Subscriber({ email })
+    //     //             newSubscriber.save()
+    //     //                 .then(subscriber => { res.json(subscriber) })
+    //     //                 .catch(error => console.log(error))
+    //     //         }
+    //     //     })
+    //     //     .catch(error => {
+    //     //         console.log(error);
+    //     //         res.json(error)
+    //     //     })
+    // }
 }
 
 export const getOne = async (req, res) => {
