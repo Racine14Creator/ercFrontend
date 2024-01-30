@@ -1,10 +1,12 @@
+import axios from "axios";
 import { useState } from "react";
 
 const Subscribe = () => {
   const [email, setEmail] = useState(''),
+    [errors, setErrors] = useState(''),
     [isPending, setIsPending] = useState(false)
 
-  const HandlerSubmit = (event) => {
+  const HandlerSubmit = async (event) => {
 
     event.preventDefault()
 
@@ -17,15 +19,16 @@ const Subscribe = () => {
 
     let url = "http://localhost:7000/subscriber"
 
-    fetch(`${url}`, {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringfy({ body })
-    }).then(_ => {
-      setIsPending(false)
-    }).catch(error => console.error(error))
+    await axios.post(url, { body })
+      .then(res => res.json())
+      .then(data => {
+        if (data.message === 'success') {
+
+        } else {
+          setErrors = data.message
+        }
+      })
+      .catch(error => console.log(error))
   }
   return (
     <>
