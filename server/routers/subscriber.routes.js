@@ -1,4 +1,5 @@
 import express from "express"
+
 import {
     deleteOne,
     getAll,
@@ -9,7 +10,13 @@ import {
 
 const router = express.Router()
 
-router.route('/').get(getAll).post(post)
-router.route('/:id').get(getOne).put(update).delete(deleteOne)
+router.route('/')
+    .get(getAll)
+    .post(post)
+
+router.route('/:id')
+    .get(getOne)
+    .put(update)
+    .delete(deleteOne)
 
 export default router
